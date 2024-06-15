@@ -30,3 +30,11 @@ Welcome to the Daraz Chatbot! This project features an interactive chatbot devel
 
 7. **Backend Integration**
    - Integrates the backend using Flask to handle data requests and responses between the chatbot and the user interface.
+
+## Screenshots
+
+![Screenshot 1](images/Screenshot1.png)
+
+![Screenshot 3](images/Screenshot3.png)
+
+![Screenshot 2](images/Screenshot2.png)
