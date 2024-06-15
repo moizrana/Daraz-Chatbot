@@ -1,6 +1,6 @@
 # Daraz Chatbot
 
-Welcome to the Daraz Chatbot repository! This project features an interactive chatbot developed to recommend mobile phones on the Daraz platform. The chatbot is built using Python and Flask, integrating Selenium for data retrieval from Daraz, and features comprehensive backend and frontend integration.
+Welcome to the Daraz Chatbot! This project features an interactive chatbot developed to recommend mobile phones on the Daraz platform. The chatbot is built using Python and Flask, integrating Selenium for data retrieval from Daraz, and features comprehensive backend and frontend integration.
 
 ## Features
 
@@ -30,10 +30,3 @@ Welcome to the Daraz Chatbot repository! This project features an interactive ch
 
 7. **Backend Integration**
    - Integrates the backend using Flask to handle data requests and responses between the chatbot and the user interface.
-
-## Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/daraz-chatbot.git
-   cd daraz-chatbot
