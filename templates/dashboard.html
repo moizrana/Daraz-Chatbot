@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Chatbot</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="chat-container">
+        <div class="chat-header">Chatbot</div>
+        <div class="chat-history" id="chat-history">
+            <!-- Chat history will be displayed here -->
+        </div>
+        <div class="chat-input">
+            <form id="chat-form" onsubmit="sendMessage(); return false;">
+                <div class="input-with-icon">
+                    <input type="text" id="user-input" placeholder="Type your message...">
+                    <i class="fas fa-microphone" onclick="startListening()"></i>
+                </div>
+                <button type="button" onclick="sendMessage()">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="dashboard-container">
+        <h2>Dashboard</h2>
+        <div class="dashboard-stats">
+            <p>Total number of listings: <span>{{ dashboard_data.total_listings }}</span></p>
+            <p>Average product price: <span>{{ dashboard_data.average_price | round(2) }}</span></p>
+            <p>Average ratings of products: <span>{{ dashboard_data.average_rating | round(2) }}</span></p>
+            <p>Average review count per product: <span>{{ dashboard_data.average_review_count | round(2) }}</span></p>
+            <p>Total number of questions asked: <span>{{ dashboard_data.total_questions }}</span></p>
+        </div>
+
+        <div id="top-products">
+            <h3>Top 5 Products</h3>
+            <ul class="product-list">
+                {% for product in dashboard_data.top_products.itertuples() %}
+                <li>
+                    <strong>{{ product.name }}</strong>
+                    <br>
+                    <span>Price: {{ product.processed_price }}</span>
+                    <br>
+                    <span>Rating: {{ product.Reviews }}</span>
+                    <br>
+                    <a href="{{ product.product_url }}" target="_blank">View Details</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Function to handle audio input
+        function startListening() {
+            var recognition = new webkitSpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = 'en-US';
+
+            recognition.onresult = function(event) {
+                var userInput = event.results[0][0].transcript;
+                document.getElementById("user-input").value = userInput;
+                sendMessage();
+            };
+
+            recognition.onerror = function(event) {
+                console.error('Speech recognition error detected: ' + event.error);
+            };
+
+            recognition.start();
+        }
+
+        // Function to send user input to the server
+        function sendMessage() {
+            var userInput = document.getElementById("user-input").value;
+            document.getElementById("user-input").value = "";
+
+            var chatHistory = document.getElementById("chat-history");
+            chatHistory.innerHTML += '<div class="user-message">User: ' + userInput + '</div>';
+
+            // Make an AJAX request to the Flask server
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/chatbot", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var response = JSON.parse(xhr.responseText).response;
+                    chatHistory.innerHTML += '<div class="chatbot-message">' + response + '</div>';
+                    chatHistory.scrollTop = chatHistory.scrollHeight;
+                }
+            };
+            xhr.send("user_input=" + encodeURIComponent(userInput));
+        }
+
+        // Trigger sendMessage function on pressing Enter key
+        document.getElementById("user-input").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Prevents the default behavior of the Enter key
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+
+</html>

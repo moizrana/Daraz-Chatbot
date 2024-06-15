@@ -1,0 +1,173 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Chat Container */
+.chat-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #3498db;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* Chat Header */
+.chat-header {
+    padding: 15px;
+    background-color: #297db6;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    border-bottom: 2px solid #1f618d;
+}
+
+/* User and Chatbot Messages */
+.user-message,
+.chatbot-message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.user-message {
+    background-color: #536577;
+    color: #fff;
+}
+
+.chatbot-message {
+    background-color: #ecf0f1;
+    color: #333;
+}
+
+/* Chat History */
+.chat-history {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* Chat Input */
+.chat-input {
+    padding: 15px;
+    background-color: #297db6;
+}
+
+.input-with-icon {
+    display: flex;
+    align-items: center;
+}
+
+input {
+    width: 85%;
+    padding: 12px;
+    border: none; /* Updated border style */
+    border-radius: 5px 0 0 5px; /* Rounded corners for input field */
+}
+
+i.fas.fa-microphone {
+    padding: 12px;
+    background-color: #1f618d;
+    color: #fff;
+    border-radius: 0 5px 5px 0; /* Rounded corners for icon */
+    cursor: pointer;
+}
+
+button {
+    padding: 12px 18px;
+    background-color: #1f618d;
+    color: #fff;
+    border: none; /* Updated border style */
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+button:hover {
+    background-image: linear-gradient(45deg, #f3ec78, #af4261); /* Gradient hover effect */
+    color: #fff; /* Text color change on hover */
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #42ce7d;
+    box-shadow: 
+        -5px -5px rgba(255, 255, 255, .5), 
+        -5px -5px rgba(255, 255, 255, .5), 
+        -5px -5px rgba(255, 255, 255, .5), 
+        inset -3px -3px rgba(255, 255, 255, .5), 
+        inset -3px -3px rgba(255, 255, 255, .5), 
+        inset -3px -3px rgba(255, 255, 255, .5); /* Neumorphism effect */
+    border-radius: .625rem; /* Border radius in rem units */
+    padding: 1.25rem; /* Increased padding for better layout */
+}
+
+.dashboard-stats {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-stats p {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 0.5rem 0;
+}
+
+.dashboard-stats p span {
+    font-weight: bold;
+    color: #27ae60;
+}
+
+h2 {
+    color: #333;
+    font-size: 1.5rem; /* Font size in rem units */
+    margin-bottom: .9375rem; /* Margin bottom in rem units */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.product-list li {
+    border-bottom: .0625rem solid #27ae60; /* Border bottom style and color */
+    padding: .9375rem; /* Padding in rem units */
+    margin-bottom: .9375rem; /* Margin bottom in rem units */
+    border-radius: .5rem; /* Border radius in rem units */
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-list li:last-child {
+    border-bottom: none; /* Remove bottom border for last item */
+}
+
+.product-list li strong {
+    display: block;
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.product-list li span {
+    display: block;
+    font-size: 1rem;
+    color: #666;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
